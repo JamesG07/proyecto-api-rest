@@ -1,4 +1,4 @@
-import { API_kEY } from './apiKey.js';
+import { API_kEY } from './data/apiKey.js';
 ('./apiKey.js');
 import { navigation } from './navigation.js';
 const api = axios.create({
