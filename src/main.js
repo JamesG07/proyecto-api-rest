@@ -1,3 +1,5 @@
+import { API_kEY } from './apiKey.js';
+('./apiKey.js');
 import { navigation } from './navigation.js';
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
@@ -6,7 +8,7 @@ const api = axios.create({
   },
 
   params: {
-    api_key: '959830e1df110edd3b1f72425a9e6a14',
+    api_key: API_kEY,
     language: 'es',
   },
 });
