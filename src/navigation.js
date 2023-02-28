@@ -4,6 +4,7 @@ import {
   getCategoriesPreview,
   getMoviesBySearch,
   getTrendingMovies,
+  getMovieById,
 } from './main.js';
 
 searchFormBtn.addEventListener('click', () => {
@@ -15,7 +16,7 @@ trendingBtn.addEventListener('click', () => {
 });
 
 arrowBtn.addEventListener('click', () => {
-  history.back();
+  location.hash = '#Home';
 });
 
 export function navigation() {
@@ -104,6 +105,10 @@ function movieDetailsPage(params) {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.add('inactive');
   movieDetailSection.classList.remove('inactive');
+
+  const [_, name] = location.hash.split('=');
+  // let id = decodeURI(name);
+  getMovieById(name);
 }
 function categoriesPage(params) {
   headerSection.classList.remove('header-container--long');
