@@ -21,10 +21,15 @@ function createMovies(template, container, arrayMovies) {
   const fragment = document.createDocumentFragment();
   arrayMovies.forEach((movie) => {
     const clone = template.cloneNode(true);
-    clone.querySelector(
-      '.movie-img'
-    ).src = `https://image.tmdb.org/t/p/w300/${movie.poster_path}`;
-    clone.querySelector('.movie-img').alt = movie.title;
+    if (movie.poster_path === null) {
+      console.log('no hay imagen');
+      clone.querySelector('.movie-img').alt = 'pelicula no encontrada';
+    } else {
+      clone.querySelector(
+        '.movie-img'
+      ).src = `https://image.tmdb.org/t/p/w300/${movie.poster_path}`;
+      clone.querySelector('.movie-img').alt = movie.title;
+    }
 
     fragment.appendChild(clone);
   });
@@ -55,7 +60,7 @@ export async function getTrendingMoviesPreview() {
     data.results
   );
 }
-export async function getMoviesByCategories(id) {
+export async function getCategoriesPreview(id) {
   const { data } = await api('discover/movie', {
     params: {
       with_genres: id,
@@ -73,4 +78,22 @@ export async function getCategoriesMovies() {
     categoriesPreviewList,
     categories
   );
+}
+
+export async function getMoviesBySearch(nameMovie) {
+  const { data } = await api(`/search/movie`, {
+    params: {
+      query: `${nameMovie}`,
+    },
+  });
+  const categories = data.results;
+
+  createMovies(templateGenericList, genericSection, categories);
+}
+
+export async function getTrendingMovies(params) {
+  const { data } = await api(`trending/all/day`);
+  const movies = data.results;
+
+  createMovies(templateGenericList, genericSection, movies);
 }
