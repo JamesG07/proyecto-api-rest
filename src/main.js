@@ -37,6 +37,13 @@ function createMovies(template, container, arrayMovies) {
       clone.querySelector('.movie-img').addEventListener('click', () => {
         location.hash = `#movie=${movie.id}`;
       });
+
+      if (movie.vote_average === 0) {
+        movie.vote_average = 5;
+      }
+      clone.querySelector('span').textContent = `${movie.vote_average.toFixed(
+        2
+      )} ⭐`;
     }
 
     fragment.appendChild(clone);

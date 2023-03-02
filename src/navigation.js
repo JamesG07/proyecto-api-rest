@@ -68,6 +68,7 @@ function trendsPage(params) {
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
   headerCategoryTitle.textContent = 'Tendencias';
+  arrowBtn.classList.remove('position');
   getTrendingMovies();
 }
 function searchPage(params) {
@@ -85,6 +86,7 @@ function searchPage(params) {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
+  arrowBtn.classList.add('position');
 
   const [_, searchValue] = location.hash.split('=');
   const query = decodeURI(searchValue).trim();
