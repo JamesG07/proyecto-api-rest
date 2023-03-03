@@ -132,6 +132,7 @@ export async function getMovieById(id) {
   const imgUrl = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
   headerSection.style.backgroundImage = `
   linear-gradient(
+    
     180deg, 
     rgba(0, 0, 0, 0.35) 19.27%, 
     rgba(0, 0, 0, 0) 29.17%

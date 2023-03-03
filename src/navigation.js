@@ -49,6 +49,8 @@ function homePage() {
   categoriesPreviewSection.classList.remove('inactive');
   genericSection.classList.add('inactive');
   movieDetailSection.classList.add('inactive');
+  containerMovideDetail.classList.add('inactive');
+  movieDetailBackground.classList.add('inactive');
 
   getCategoriesMovies();
   getTrendingMoviesPreview();
@@ -107,6 +109,9 @@ function movieDetailsPage(params) {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.add('inactive');
   movieDetailSection.classList.remove('inactive');
+  arrowBtn.classList.add('position');
+  containerMovideDetail.classList.remove('inactive');
+  movieDetailBackground.classList.remove('inactive');
 
   const [_, name] = location.hash.split('=');
   // let id = decodeURI(name);

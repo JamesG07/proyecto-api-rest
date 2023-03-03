@@ -34,6 +34,11 @@ const searchFormBtn = document.querySelector('#searchBtn');
 
 const trendingBtn = document.querySelector('.trendingPreview-btn');
 
+const containerMovideDetail = document.querySelector(
+  '.container-movide-detail'
+);
+const movieDetailBackground = document.querySelector('.movieDetailBackground');
+
 const movieDetailTitle = document.querySelector('.movieDetail-title');
 const movieDetailDescription = document.querySelector(
   '.movieDetail-description'
