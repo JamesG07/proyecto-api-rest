@@ -1,5 +1,4 @@
 import { API_kEY } from './data/apiKey.js';
-('./apiKey.js');
 import { navigation } from './navigation.js';
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
@@ -16,6 +15,9 @@ window.addEventListener('DOMContentLoaded', () => {
   navigation();
 });
 window.addEventListener('hashchange', navigation, false);
+arrowBtn.addEventListener('click', () => {
+  console.log('hola');
+});
 
 //utils
 function createMovies(template, container, arrayMovies) {
@@ -26,7 +28,6 @@ function createMovies(template, container, arrayMovies) {
     const clone = template.cloneNode(true);
 
     if (movie.poster_path === null) {
-      console.log('no hay imagen');
       clone.querySelector('.movie-img').alt = 'pelicula no encontrada';
     } else {
       clone.querySelector(
@@ -68,7 +69,7 @@ function createCategorties(template, container, arrayCategories) {
 }
 // Llamados a la API
 export async function getTrendingMoviesPreview() {
-  const { status, data } = await api(`trending/movie/day`);
+  const { status, data } = await api(`trending/all/day`);
   createMovies(
     templateTrendingPreview,
     trendingMoviesPreviewList,
@@ -124,7 +125,6 @@ export async function getMovieById(id) {
   const { status, data } = await api(`movie/${id}`);
   if (status !== 200)
     throw new Error(`Error en la petición GET. Código HTTP: ${status}`);
-  console.log(data);
   movieDetailTitle.textContent = data.title;
   movieDetailScore.textContent = data.vote_average;
   movieDetailDescription.textContent = data.overview;
@@ -132,7 +132,7 @@ export async function getMovieById(id) {
   const imgUrl = `https://image.tmdb.org/t/p/w500/${data.poster_path}`;
   headerSection.style.backgroundImage = `
   linear-gradient(
-    
+
     180deg, 
     rgba(0, 0, 0, 0.35) 19.27%, 
     rgba(0, 0, 0, 0) 29.17%
@@ -149,4 +149,34 @@ export async function getRelateMoviesId(id) {
   const dataMovies = data.results;
 
   createMovies(templateMoviesSimilar, movieContainer, dataMovies);
+}
+export async function getCastMovies(id) {
+  const { data } = await api(`movie/${id}/credits`);
+  console.log(data.cast);
+  castMoviesContainer.innerHTML = '';
+
+  const fragment = document.createDocumentFragment();
+  data.cast.forEach((movie) => {
+    const clone = templateMoviesCast.cloneNode(true);
+
+    if (movie.profile_path === null) {
+      console.log('pelicula no encontrada');
+    } else {
+      clone
+        .querySelector('.movie-img')
+        .setAttribute(
+          'src',
+          `https://image.tmdb.org/t/p/w300/${movie.profile_path}`
+        );
+
+      clone.querySelector('.movie-img').addEventListener('click', () => {
+        location.hash = `#movie=${movie.id}`;
+      });
+      clone.querySelector('span').textContent = movie.original_name;
+    }
+
+    fragment.appendChild(clone);
+  });
+
+  castMoviesContainer.appendChild(fragment);
 }

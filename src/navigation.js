@@ -5,6 +5,7 @@ import {
   getMoviesBySearch,
   getTrendingMovies,
   getMovieById,
+  getCastMovies,
 } from './main.js';
 
 searchFormBtn.addEventListener('click', () => {
@@ -16,8 +17,12 @@ trendingBtn.addEventListener('click', () => {
 });
 
 arrowBtn.addEventListener('click', () => {
-  location.hash = '#Home';
+  history.back();
 });
+
+// headerHome.addEventListener('click', () => {
+//   location.hash = '#Home';
+// });
 
 export function navigation() {
   // console.log(location);
@@ -51,6 +56,7 @@ function homePage() {
   movieDetailSection.classList.add('inactive');
   containerMovideDetail.classList.add('inactive');
   movieDetailBackground.classList.add('inactive');
+  // headerHome.classList.add('inactive');
 
   getCategoriesMovies();
   getTrendingMoviesPreview();
@@ -70,7 +76,10 @@ function trendsPage(params) {
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
   headerCategoryTitle.textContent = 'Tendencias';
-  arrowBtn.classList.remove('position');
+  arrowBtn.classList.add('position');
+  // headerHome.classList.remove('inactive');
+  // headerHome.classList.add('position');
+
   getTrendingMovies();
 }
 function searchPage(params) {
@@ -93,6 +102,8 @@ function searchPage(params) {
   const [_, searchValue] = location.hash.split('=');
   const query = decodeURI(searchValue).trim();
   headerCategoryTitle.textContent = `Estas buscando "${query}"`;
+  // headerHome.classList.remove('inactive');
+
   getMoviesBySearch(query);
 }
 function movieDetailsPage(params) {
@@ -112,10 +123,12 @@ function movieDetailsPage(params) {
   arrowBtn.classList.add('position');
   containerMovideDetail.classList.remove('inactive');
   movieDetailBackground.classList.remove('inactive');
+  // headerHome.classList.remove('inactive');
 
   const [_, name] = location.hash.split('=');
-  // let id = decodeURI(name);
-  getMovieById(name);
+  let id = decodeURI(name);
+  getMovieById(id);
+  getCastMovies(id);
 }
 function categoriesPage(params) {
   headerSection.classList.remove('header-container--long');
@@ -130,6 +143,7 @@ function categoriesPage(params) {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
+  // headerHome.classList.remove('inactive');
 
   const [_, categoryData] = location.hash.split('=');
 

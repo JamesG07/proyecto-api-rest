@@ -18,6 +18,9 @@ const movieDetailCategoriesList = document.querySelector(
 const relatedMoviesContainer = document.querySelector(
   '.relatedMovies-scrollContainer'
 );
+const castMoviesContainer = document.querySelector(
+  '.castMovies-scrollContainer'
+);
 
 const categorieslist = document.querySelector('.categories-list');
 // Elements
@@ -26,6 +29,8 @@ const arrowBtn = document.querySelector('.header-arrow');
 const headerCategoryTitle = document.querySelector(
   '.header-title--categoryView'
 );
+
+const headerHome = document.querySelector('.header-home');
 
 const headerContainerlong = document.querySelector('.header-container--long');
 
@@ -64,3 +69,6 @@ const templateCategories =
 const templateMoviesSimilar = document.getElementById(
   'templateMoviesSimilar'
 ).content;
+
+const templateMoviesCast =
+  document.getElementById('templateMoviesCast').content;

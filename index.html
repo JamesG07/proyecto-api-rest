@@ -16,18 +16,32 @@
   <body>
     <div class="container">
       <header id="header" class="header-container">
-        <span class="header-arrow inactive">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="48"
-            viewBox="0 96 960 960"
-            width="48"
-          >
-            <path
-              d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"
-            />
-          </svg>
-        </span>
+        <div class="icons">
+          <span class="header-arrow position inactive">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="48"
+              viewBox="0 96 960 960"
+              width="48"
+            >
+              <path
+                d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"
+              />
+            </svg>
+          </span>
+          <!-- <span class="header-home position">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="48"
+              viewBox="0 96 960 960"
+              width="48"
+            >
+              <path
+                d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"
+              />
+            </svg>
+          </span> -->
+        </div>
         <h1 class="header-title"><a href="index.html">Películas</a></h1>
         <h1 class="header-title header-title--categoryView inactive">Acción</h1>
 
@@ -134,7 +148,7 @@
                 <template id="templateMoviesSimilar">
                   <span></span>
                   <img
-                    src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+                    src="./styles/no-picture-available-icon-1.jpg"
                     class="movie-img"
                     alt="Nombre de la película"
                   />
@@ -143,15 +157,37 @@
             </article>
           </section>
         </div>
-      </div>
+        <article class="catsdMovies-container">
+          <h2 class="relatedMovies-title">Reparto</h2>
 
-      <footer>
-        <h3>
-          <a href="https://www.linkedin.com/in/jhonjamesbedoya/"
-            >Creado por Jhon James</a
-          >
-        </h3>
-      </footer>
+          <div class="castMovies-scrollContainer">
+            <!--<div class="movie-container">
+                <img
+                src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+                class="movie-img"
+                alt="Nombre de la película"
+              />
+            </div>-->
+          </div>
+          <template id="templateMoviesCast">
+            <div class="movie-container cast">
+              <span></span>
+              <img
+                src="./styles/404.png"
+                class="movie-img"
+                alt="Nombre de la película"
+              />
+            </div>
+          </template>
+        </article>
+        <footer>
+          <h3>
+            <a href="https://www.linkedin.com/in/jhonjamesbedoya/"
+              >Creado por Jhon James</a
+            >
+          </h3>
+        </footer>
+      </div>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
       <script src="src/node.js"></script>
       <script type="module" src="./src/main.js"></script>
