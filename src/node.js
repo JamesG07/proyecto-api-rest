@@ -7,7 +7,7 @@ const movieDetailSection = document.querySelector('#movieDetail');
 
 // Lists & Containers
 const searchForm = document.querySelector('#searchForm');
-const movieContainer = document.querySelector('.movie-container');
+const movieContainer = document.querySelector('.movie-related');
 const trendingMoviesPreviewList = document.querySelector(
   '.trendingPreview-movieList'
 );
@@ -21,6 +21,9 @@ const relatedMoviesContainer = document.querySelector(
 const castMoviesContainer = document.querySelector(
   '.castMovies-scrollContainer'
 );
+const likedMovieList = document.querySelector('.liked-movieList');
+
+const likedContainer = document.querySelector('.liked-container');
 
 const categorieslist = document.querySelector('.categories-list');
 // Elements
@@ -72,3 +75,7 @@ const templateMoviesSimilar = document.getElementById(
 
 const templateMoviesCast =
   document.getElementById('templateMoviesCast').content;
+
+const templateFavoriteMovies = document.getElementById(
+  'templateFavoriteMovies'
+).content;
